@@ -13,7 +13,7 @@ module ActionDispatch
       def self.from_session_value(value)
         case value
         when ::ActionController::Flash::FlashHash # Rails 2.x
-          new(value, value.instance_variable_get(:@used).select{|a,b| b}.keys)
+          new(value, value.instance_variable_get(:@used).select{|a,b| b}.collect{|a| a[0]})
         when ::ActionDispatch::Flash::FlashHash # Rails 3.1, 3.2
           new(value.instance_variable_get(:@flashes), value.instance_variable_get(:@used))
         when Hash # Rails 4.0, we backported to 2.3 too
