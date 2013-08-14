@@ -1,5 +1,10 @@
 # Rails4SessionFlashBackport
 
+This is a gem made from a fork of [the original gem](https://github.com/envato/rails_4_session_flash_backport), with a fix:
+on our systems, we'd see an exception raised when the gem loaded a Rails 2 flash object.
+
+This handles that case, and allows a more graceful migration from Rails 2 to 3.
+
 Different versions of Rails have stored flash messages in different objects in
 the session, making it a pain to upgrade without nuking everyones session. The
 good ol' `ActionDispatch::Session::SessionRestoreError` making life difficult.
